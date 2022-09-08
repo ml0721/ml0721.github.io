@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图形打印</title>
+		<script type="text/javascript">
+			document.write("三角形<br/>");
+			//三角形打印，思路：先打印空格，再输入星号加空格，再换行，循环
+			for(var i=0;i<5;i++)//第一个for循环为一共有几行
+			{
+				for(var k=4;k>i;k--)//第二个for循环为每一行需要几个空格
+				{//根据第一行和最后一行来看同样的位置在第五行前面有4个空格因此空格最大为4所以k=4
+					document.write("&nbsp");
+				}
+				for(var j=0;j<=i;j++)//第三个for循环：输入星号的个数与行数相同，因此j<=i
+				{
+					document.writeln("*");
+				}
+				document.write("<br/>");//换行
+			}
+			document.write("平行四边形<br/>");
+			//平行四边形思路：先打印空格，再打印星号+空格，再换行，循环
+			for(var i=0;i<5;i++)//第一个for循环为一共有几行
+			{
+				for(var j=4;j>i;j--)//第二个for循环：根据图形来看，每行的空格依次是4，3，2，1，0
+				{
+					document.write("&nbsp");
+				}
+				for(var k=0;k<5;k++)//第三个for循环：每一行都是5个星号每个星号之间有一个空格
+				{
+					document.writeln("*");
+				}
+				document.write("<br/>");//换行
+			}
+			document.write("菱形<br/>");
+			//菱形思路：先找出星号数量最大的一行也就等于行数，以这一行分为上下两部分，
+			//上部分为星号数量依次是1，3，5，每行的开头空格数依次为4，2，0
+			//下部分为星号数量依次是5，3，1，每行的开头空格数依次为0，2，4
+			//先输入空格再输入星号+空格，再换行，循环
+			for(var i=0;i<5;i++)//第一个for循环为一共要循环的次数，也是行数
+			{
+				if(i<3)//上半部分
+				{
+					for(var j=0;j<4-2*i;j++)//第二个for循环为输出每行开头的空格，通过找规律可以得到j<4-2*i
+					{
+						document.write("&nbsp");
+					}
+					for(var k=0;k<2*i+1;k++)//这个for循环为输出星号+空格，找规律可得k<2*i+1
+					{
+						document.writeln("*");
+					}
+					document.write("<br/>");//每行结束换行
+				}
+				else if(i>=3)//下半部分，不包括最大星号数那一行
+				{
+					for(var j=0;j<2*i-4;j++)//这个for循环为输出每行开头的空格，通过找规律可以得到j<2*i-4
+					{
+						document.write("&nbsp");
+					}
+					for(var k=0;k<(5-i)+(4-i);k++)//这个for循环为输出星号+空格，也是最难的一部分，
+					//通过放大行数，观察菱形中间一行的星号数量减去第i行的差值与
+					//实际第i行的星号数相差的星号数量找出规律k<(5-i)+(4-i)
+					{
+						document.writeln("*");
+					}
+					document.write("<br/>");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
